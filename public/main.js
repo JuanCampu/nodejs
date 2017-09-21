@@ -239,7 +239,7 @@ $(function() {
   // Whenever the server emits 'new message', update the chat body
   socket.on('message', function (data) {
     // we tell the client to execute 'new message'
-    socket.emit('login','hola');
+    socket.emit('message','hola');
     socket.broadcast.emit('message', data);
   });
   // Whenever the server emits 'user joined', log it in the chat body

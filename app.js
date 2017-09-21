@@ -23,7 +23,7 @@ io.on('connection', function (socket) {
   // when the client emits 'new message', this listens and executes
   socket.on('message', function (data) {
     // we tell the client to execute 'new message'
-    socket.emit('login','hola');
+    socket.emit('message','hola2');
     socket.broadcast.emit('message', data);
   });
 
