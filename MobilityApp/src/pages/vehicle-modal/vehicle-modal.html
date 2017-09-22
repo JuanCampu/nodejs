@@ -1,0 +1,68 @@
+<!--
+  Generated template for the VehicleModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Editar Vehículo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="image-background"  padding>
+  <div [hidden]="isLoading">
+    <ion-row>
+        <ion-col width-50>
+          <img class="image-vehicle"   src="{{siteForm.controls.vehiculo_foto.value}}"/>
+        </ion-col>
+        <ion-col width-50>
+          <button class="primary" ion-button [disabled]="!networkService.connectionState"  (click)="ChangePhoto(siteForm.controls.vehiculo_id.value)" block>Cambiar Foto</button>
+        </ion-col>
+      </ion-row> 
+    <form [formGroup]="siteForm" (ngSubmit)="CreateVehicle()">
+      <ion-item class="item-movi-app item-padd-left">
+        <ion-label class="font-movi-app" floating>Placa:</ion-label>
+        <ion-input (ionBlur)="isVisitedChangeForm('placa')"   (ionFocus)="isVisitedChangeForm('placa')" type="text" text-uppercase formControlName="vehiculo_placa"></ion-input>
+      </ion-item>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_placa.errors?.minlength?.actualLength != null  && !isVisited.placa && siteForm.controls.vehiculo_placa.touched "  >*El número de la  placa es demasiado pequeño.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_placa.errors?.maxlength?.actualLength != null  && !isVisited.placa && siteForm.controls.vehiculo_placa.touched "  >*El número de la  placa es demasiado grande.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_placa.errors?.required  && !isVisited.placa && siteForm.controls.vehiculo_placa.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_placa.errors?.inCorrectPlaque  && !isVisited.placa && siteForm.controls.vehiculo_placa.touched">*La placa es incorrecta.</p>
+      <ion-item class="item-movi-app item-padd-left">
+        <ion-label class="font-movi-app" floating>Marca:</ion-label>
+        <ion-input (ionBlur)="isVisitedChangeForm('marca')"   (ionFocus)="isVisitedChangeForm('marca')" type="text" formControlName="vehiculo_marca"></ion-input>
+      </ion-item>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_marca.errors?.minlength?.actualLength != null  && !isVisited.marca && siteForm.controls.vehiculo_marca.touched "  >*Asegúrese de colocar un nombre válido.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_marca.errors?.maxlength?.actualLength != null  && !isVisited.marca && siteForm.controls.vehiculo_marca.touched "  >*El texto  es demasiado grande.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_marca.errors?.required  && !isVisited.marca && siteForm.controls.vehiculo_marca.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_marca.errors?.pattern?.actualValue != null  && !isVisited.marca && siteForm.controls.vehiculo_marca.touched">*Solo se permiten letras en este campo.</p>
+      <ion-item class="item-movi-app item-padd-left">
+        <ion-label class="font-movi-app"floating>Modelo:</ion-label>
+        <ion-datetime [doneText]="'Aceptar'" [cancelText]="'Cancelar'" formControlName="vehiculo_modelo" displayFormat="YYYY"  min="{{currentYear-50}}" max="{{currentYear+1}}"></ion-datetime>
+      </ion-item>
+      <ion-item class="item-movi-app item-padd-left">
+        <ion-label class="font-movi-app" floating>Color:</ion-label>
+        <ion-input type="text"  (ionBlur)="isVisitedChangeForm('color')"   (ionFocus)="isVisitedChangeForm('color')" formControlName="vehiculo_color"></ion-input>
+      </ion-item>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_color.errors?.minlength?.actualLength != null  && !isVisited.color && siteForm.controls.vehiculo_color.touched "  >*Asegúrese de colocar un nombre válido.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_color.errors?.maxlength?.actualLength != null  && !isVisited.color && siteForm.controls.vehiculo_color.touched "  >*El texto  es demasiado grande.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_color.errors?.required  && !isVisited.color && siteForm.controls.vehiculo_color.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.vehiculo_color.errors?.pattern?.actualValue != null  && !isVisited.color && siteForm.controls.vehiculo_color.touched">*Solo se permiten letras en este campo.</p>
+      <ion-item class="item-movi-app item-padd-left">
+        <ion-label class="font-movi-app" floating>Cupo:</ion-label>
+
+        <ion-select  [okText]="'Aceptar'" [cancelText]="'Cancelar'" formControlName="vehiculo_cupo" >
+      <ion-option *ngFor="let cupo of cupos"  [value] = "cupo" >{{cupo}}</ion-option>
+    </ion-select>
+      </ion-item>
+    </form>
+    <div class="center button-mar">
+        <button block fab-center ion-button class="btn-movi-app-green-clear" [disabled]="!siteForm.valid || !networkService.connectionState" (click)="EditVehicle()" [disabled]="dragStart" block>Editar</button>
+      <button block fab-center ion-button  color="secondary" (click)="Cancel()">Cancelar</button>  
+    </div>
+  </div>
+</ion-content>

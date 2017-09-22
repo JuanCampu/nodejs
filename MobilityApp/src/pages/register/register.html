@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="font-movi-app">Registro de usuario</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="image-background" padding>
+  <div id="register-img">
+    <img  src="assets/img/Logo-Superior-Movi-App.png" />
+  </div>
+  <div class="title-h1-movi-app font-movi-app-bold">
+    MoviApp
+  </div>
+  <br />
+  <div [class.hide]="verification != 0">
+    <div class="text-description font-movi-app">
+      <p>Por favor ingresa tu correo electrónico</p>
+      <p>Recuerda que debe ser un correo electrónico de una institución distrital</p>
+    </div>
+    <br />
+    <br /> 
+    <div class="title-h2-movi-app font-movi-app-bold">
+      <p>Correo electrónico</p>
+    </div>
+    <form class="center" [formGroup]="siteForm">
+       <ion-item>
+          <ion-input type="email" placeholder="tuemail@secretaria.gov.co" formControlName="usuario_correo"></ion-input>
+        </ion-item>
+      <button full ion-button class="btn-movi-app-green-clear font-movi-app" type="submit" (click)="sendEmail()" [disabled]="!siteForm.valid || !networkService.connectionState">Confirmar correo</button>
+    </form>
+   
+  </div>
+  <div [class.hide]="verification != 1">
+    <div class="text-description font-movi-app">
+      <p>El código de acceso ha sido enviado a tu correo electrónico</p>
+      <p>Revisa tu correo e ingresalo aquí!</p>
+    </div>
+    <br />
+    <br />
+    <div class="title-h2-movi-app">
+      <p>Código de acceso</p>
+      
+    </div>
+    <ion-item>
+      <ion-input  text-uppercase type="text" placeholder="ejemplo: a9a9a" [(ngModel)]="verificationCode"></ion-input>
+    </ion-item>
+    <br />
+    <button class="btn-movi-app-green-clear font-movi-app" [disabled]="!networkService.connectionState" ion-button block (click)="verify()">
+      Verificar
+    </button>
+  </div>
+  <div [class.hide]="verification != 2 ">
+    
+    <div class="text-description font-movi-app">
+      <p>El código es válido!</p>
+      <p>Complete el registro</p>
+    </div>
+    <br />
+    <br />
+    
+    <form (ngSubmit)="logForm()">
+      <div class="email-text font-movi-app">
+        <p>Nombre completo</p>
+      
+      </div>
+      <ion-item>
+        <ion-input  type="text" [(ngModel)]="todo.nombre" name="nombre"></ion-input>
+      </ion-item>
+      <!--<div class="email-text">
+        <p>Secretaria</p>
+      </div>
+      <ion-item>
+        <ion-select type="text" [(ngModel)]="todo.secretaria" name="secretaria" (ngModelChange)='recharging()'>
+          <ion-option *ngFor="let secretaria of secretarias" value="{{secretaria.secretaria_id}}">{{secretaria.secretaria_nombre}}</ion-option>
+        </ion-select>
+      </ion-item>-->
+      <div class="email-text font-movi-app">
+        <p>Entidad</p>
+      </div>
+      <ion-item>
+        <ion-select [okText]="'Aceptar'" [cancelText]="'Cancelar'"  type="text" [(ngModel)]="todo.entidad" name="entidad">
+          <ion-option *ngFor="let entidad of entidades" value="{{entidad.entidad_id}}">{{entidad.entidad_nombre}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button [disabled]="!networkService.connectionState" class="btn-movi-app-green-clear font-movi-app" type="submit" block>Continuar</button>
+    </form>
+  </div>
+
+</ion-content>

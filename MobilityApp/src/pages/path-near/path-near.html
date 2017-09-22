@@ -1,0 +1,31 @@
+<!--
+  Generated template for the PathNearPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Rutas cercanas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="image-background" padding>
+    <ion-list>
+        <ion-item class="item-background" *ngFor="let path of paths; let i = index">
+            <ion-avatar item-start>
+                <ion-icon class="ion-icon-block ion-md-iconsc" ios="ios-pin" md="md-pin"></ion-icon>
+            </ion-avatar>
+            <h2 [hidden]="searchedName" class="font-movi-app">{{path.ruta_nombre}}</h2>
+            <h2 [hidden]="!searchedName" class="font-movi-app">Propietario: {{path.usuario_nombre}} </h2>
+            <h2 [hidden]="!searchedName" class="font-movi-app"> {{path.ruta_nombre}} </h2>
+            <h3 class="font-movi-app"> {{(path.ruta_inicio_direccion.length > 10) ? path.ruta_inicio_direccion.substring(0, 25)+'...': path.ruta_inicio_direccion}}</h3>
+            <p class="font-movi-app">Cupo  {{path.ruta_cupo}}</p>
+            <ion-note (click)="PresentPathModal(path.ruta_id,path.usuario_id)" class="center" item-end> 
+                <ion-icon class="ion-icon-block ion-md-iconsc" ios="md-search" md="md-search"></ion-icon>
+                <h3 class="font-movi-app">Detalle</h3>
+            </ion-note>
+          </ion-item>
+    </ion-list>
+</ion-content>

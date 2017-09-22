@@ -1,0 +1,39 @@
+<!--
+  Generated template for the StartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton >
+    <button class="show" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+       <img class="start-icon-margin" src="logo.jpg" width="40px" style="display:inline-block" src="assets/img/Logo-Superior-60x60-Movi-App.png" height="40px"/>
+        <ion-title class="titleicon font-movi-app" style="display:inline-block" >MoviApp</ion-title> 
+  </ion-navbar>
+</ion-header>
+<ion-content class="image-background">
+ 
+  <ion-input type="text" [(ngModel)]="chatinp"></ion-input>
+  <button fab (click)="Send(chatinp)">Send</button>
+  <ion-list>
+      <ion-item *ngFor="let message of chats">{{message}}</ion-item>
+    </ion-list> 
+  <h2 class="white center" center>Últimas noticias</h2>
+  <ion-card class="card card-ios"  *ngFor="let noticia of noticias; let i = index">
+    <img src="data:image/png;base64,{{noticia.noticia_imagen}}">
+    <ion-card-content class="card-content card-content-ios">
+      <ion-card-title class="card-title card-title-ios">
+      {{(noticia.noticia_titulo.length > 50) ? noticia.noticia_titulo.substring(0, 50)+'...': noticia.noticia_titulo}}
+      </ion-card-title>
+      <p>
+        {{(noticia.noticia_contenido.length > 250) ? noticia.noticia_contenido.substring(0, 250)+'...': noticia.noticia_contenido}}
+      </p>
+      <p>
+        <a href="{{noticia.noticia_url}}" stop-event="" ng-click="click()" class="">Ir a la noticia</a>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

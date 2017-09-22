@@ -1,0 +1,48 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding  class="image-background">
+  <div [hidden]="isLoading">
+    <form [formGroup]="siteForm" (ngSubmit)="EditForm()">
+
+      <ion-item class="item-background item-padd-left">
+        <ion-label class="font-movi-app" floating>Nombre:</ion-label>
+      <ion-input class="font-movi-app"  (ionBlur)="isVisitedChangeForm('nombre')"   (ionFocus)="isVisitedChangeForm('nombre')" type="text" text-uppercase formControlName="usuario_nombre"></ion-input>
+      </ion-item>
+        <p class="alert-message" *ngIf="siteForm.controls.usuario_nombre.errors?.minlength?.actualLength != null  && !isVisited.nombre && siteForm.controls.usuario_nombre.touched "  >*El nombre es demasiado pequeño.</p>
+        <p class="alert-message" *ngIf="siteForm.controls.usuario_nombre.errors?.maxlength?.actualLength != null  && !isVisited.nombre && siteForm.controls.usuario_nombre.touched "  >*El nombre es demasiado grande.</p>
+        <p class="alert-message" *ngIf="siteForm.controls.usuario_nombre.errors?.required  && !isVisited.nombre && siteForm.controls.usuario_nombre.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+        <p class="alert-message" *ngIf="siteForm.controls.usuario_nombre.errors?.pattern?.actualValue != null  && !isVisited.nombre && siteForm.controls.usuario_nombre.touched">*Solo se permiten letras en este campo.</p>
+        <ion-item class="item-background item-padd-left">
+        <ion-label class="font-movi-app" floating>Cedula:</ion-label>
+        <ion-input class="font-movi-app"  (ionBlur)="isVisitedChangeForm('cedula')"   (ionFocus)="isVisitedChangeForm('cedula')"  type="tel" text-uppercase formControlName="usuario_cedula"></ion-input>
+      </ion-item>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_cedula.errors?.minlength?.actualLength != null  && !isVisited.cedula && siteForm.controls.usuario_cedula.touched "  >*el número de cedula  es demasiado pequeño.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_cedula.errors?.maxlength?.actualLength != null  && !isVisited.cedula && siteForm.controls.usuario_cedula.touched "  >*el número de cedula  es demasiado grande.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_cedula.errors?.required  && !isVisited.cedula && siteForm.controls.usuario_cedula.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_cedula.errors?.number && !isVisited.cedula && siteForm.controls.usuario_cedula.touched ">*Este campo solo acepta números.</p>
+      <ion-item class="item-background item-padd-left">
+        <ion-label class="font-movi-app" floating>Celular:</ion-label>
+        <ion-input class="font-movi-app"  (ionBlur)="isVisitedChangeForm('celular')"   (ionFocus)="isVisitedChangeForm('celular')"  type="tel" text-uppercase formControlName="usuario_celular"></ion-input>
+      </ion-item>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_celular.errors?.minlength?.actualLength != null  && !isVisited.celular && siteForm.controls.usuario_celular.touched "  >*el número celular es demasiado pequeño.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_celular.errors?.maxlength?.actualLength != null  && !isVisited.celular && siteForm.controls.usuario_celular.touched "  >*el número celular  es demasiado grande.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_celular.errors?.required  && !isVisited.celular && siteForm.controls.usuario_celular.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+      <p class="alert-message" *ngIf="siteForm.controls.usuario_celular.errors?.number && !isVisited.celular && siteForm.controls.usuario_celular.touched">*Este campo solo acepta números.</p>
+      <div class="center button-mar">
+        <button  block ion-button  [disabled]="!siteForm.valid || !networkService.connectionState" class="btn-movi-app-green-clear" type="submit"  >GUARDAR CAMBIOS</button>
+        <button block ion-button (click)="Cancel(); $event.preventDefault()" color="secondary">CANCELAR</button>
+      </div>
+    </form>
+  </div>
+</ion-content>

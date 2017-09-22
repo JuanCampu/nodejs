@@ -1,0 +1,70 @@
+<!--
+  Generated template for the BicycleHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Historial de biciviajes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="image-background" padding>
+    <div [hidden]="isLoading">
+        <ion-list>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-2> <div class="tree"></div> </ion-col>
+                        <ion-col col-8> <h3 class="white center">Compacto de tus biciviajes</h3></ion-col>
+                        <ion-col col-2> <div class="carbon"></div> </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-item class="item-background">
+                    <ion-avatar item-start>
+                    <ion-icon  class="ion-md-iconsc"ios="md-bicycle" md="md-bicycle"></ion-icon>
+                    </ion-avatar>
+                    <h2 class="font-movi-app">Biciviajes</h2>
+                    <h3 class="white">Total viajes: {{trayectorys.total_viajes}}</h3>
+                </ion-item>
+                <ion-item class="item-background">
+                    <ion-avatar item-start>
+                        <ion-icon class="ion-md-iconsc" ios="md-speedometer" md="md-speedometer"></ion-icon>
+                    </ion-avatar>
+                    <h2 class="font-movi-app">Biciviajes</h2>
+                    <h3 class="white">Total Kilometros: {{trayectorys.total_kilometros}}</h3>
+                </ion-item>
+                <!-- <ion-item class="item-background" >
+                    <ion-avatar item-start>
+                        <ion-icon class="ion-md-iconsc" ios="ios-bicycle" md="md-bicycle"></ion-icon>
+                    </ion-avatar>
+                    <h2 class="font-movi-app">Has liberado la congestión</h2>
+                    <h3 class="white">del SITP en {{trayectorys.total_viajes}} cupos</h3>
+                </ion-item> -->
+
+            
+        <!--  <ion-item class="item-background" *ngFor="let trajectory of trajectorys; let i = index" >
+                <ion-avatar item-start>
+                    <div class="tree"></div>
+                </ion-avatar>
+                <h2 class="font-movi-app">Viaje # {{i+1}}</h2>
+                <h3 class="white">Metros recorridos: {{trajectory.trayecto_metros}}</h3>
+                <ion-grid>
+                    <ion-row>
+                    <ion-col col-2> <div class="sembrar"></div> </ion-col>
+                    <ion-col col-9> <p class="white">3 arboles sembrados</p></ion-col>
+                    </ion-row>
+                    <ion-row>
+                    <ion-col col-2> <div class="carbon"></div> </ion-col>
+                    <ion-col col-9> <p class="white">150gr recuperados</p></ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-note class="center" item-end> 
+                    <ion-icon ios="ios-search" md="md-search" class="ion-md-iconsc"></ion-icon>
+                    <h3 class="font-movi-app"> Detalle</h3>
+                </ion-note>
+            </ion-item> -->
+        </ion-list>
+    </div>    
+</ion-content>

@@ -1,0 +1,47 @@
+<!--
+  Generated template for the FavoriteModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sitio Favorito</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="image-background"  padding>
+    <form [formGroup]="siteForm" >
+        <ion-item class="item-movi-app item-padd-left">
+            <ion-label class="font-movi-app" floating>Nombre:</ion-label>
+            <ion-input (ionBlur)="isVisitedChangeForm('nombre')"   (ionFocus)="isVisitedChangeForm('nombre')" type="text" text-uppercase formControlName="sitio_nombre"></ion-input>
+          </ion-item>
+          <p class="alert-message" *ngIf="siteForm.controls.sitio_nombre.errors?.minlength?.actualLength != null  && !isVisited.nombre && siteForm.controls.sitio_nombre.touched "  >*Asegúrese de colocar un nombre válido.</p>
+          <p class="alert-message" *ngIf="siteForm.controls.sitio_nombre.errors?.maxlength?.actualLength != null  && !isVisited.nombre && siteForm.controls.sitio_nombre.touched "  >*El nombre  es demasiado grande.</p>
+          <p class="alert-message" *ngIf="siteForm.controls.sitio_nombre.errors?.required  && !isVisited.nombre && siteForm.controls.sitio_nombre.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+          <p class="alert-message" *ngIf="siteForm.controls.sitio_nombre.errors?.pattern?.actualValue != null  && !isVisited.nombre && siteForm.controls.sitio_nombre.touched">*Solo se permiten letras en este campo.</p>
+          <ion-item class="item-movi-app item-padd-left">
+              <ion-label class="font-movi-app" floating>Descripción:</ion-label>
+              <ion-input (ionBlur)="isVisitedChangeForm('descripcion')"   (ionFocus)="isVisitedChangeForm('descripcion')" type="text" formControlName="sitio_descripcion"></ion-input>
+            </ion-item>
+            <p class="alert-message" *ngIf="siteForm.controls.sitio_descripcion.errors?.minlength?.actualLength != null  && !isVisited.descripcion  && siteForm.controls.sitio_descripcion.touched  "  >*Asegúrese de colocar un nombre válido.</p>
+            <p class="alert-message" *ngIf="siteForm.controls.sitio_descripcion.errors?.maxlength?.actualLength != null  && !isVisited.descripcion  && siteForm.controls.sitio_descripcion.touched  "  >*La descripción es demasiado grande.</p>
+            <p class="alert-message" *ngIf="siteForm.controls.sitio_descripcion.errors?.required  && !isVisited.descripcion  && siteForm.controls.sitio_descripcion.touched  "  >*El campo es requerido. Asegúrate de llenar el campo.</p>
+            <p class="alert-message" *ngIf="siteForm.controls.sitio_descripcion.errors?.pattern?.actualValue != null  && !isVisited.descripcion  && siteForm.controls.sitio_descripcion.touched ">*Solo se permiten letras en este campo.</p>
+ <ion-item class="item-movi-app item-padd-left">
+                <ion-label class="font-movi-app" floating>Dirección:</ion-label>
+                <ion-input type="text"  (ionBlur)="isVisitedChangeForm('direccion')"   (ionFocus)="isVisitedChangeForm('direccion');ShowMap()" formControlName="sitio_direccion"></ion-input>
+                <button ion-button class="button-outline-icon" item-end [hidden]="site.siteDisable"  (click)="ShowMap()"><ion-icon name="map"></ion-icon></button>
+              </ion-item>
+              <p class="alert-message" *ngIf="siteForm.controls.sitio_direccion.errors?.minlength?.actualLength != null  && !isVisited.direccion && siteForm.controls.sitio_direccion.touched "  >*Asegúrese de colocar un nombre válido.</p>
+              <p class="alert-message" *ngIf="siteForm.controls.sitio_direccion.errors?.maxlength?.actualLength != null  && !isVisited.direccion && siteForm.controls.sitio_direccion.touched "  >*La dirección  es demasiado grande.</p>
+              <p class="alert-message" *ngIf="siteForm.controls.sitio_direccion.errors?.required  && !isVisited.direccion && siteForm.controls.sitio_direccion.touched "  >*El campo es requerido. Asegúrate de llenar el campo.</p>                  
+          </form>
+    <div class="center button-mar">
+        <button block fab-center ion-button [disabled]="!siteForm.valid || !networkService.connectionState" class="btn-movi-app-green-clear" (click)="EditSite()">Editar</button>  
+      <button block fab-center ion-button  color="secondary" (click)="Cancel()" >Cancelar</button>  
+    </div>
+</ion-content>

@@ -1,0 +1,11 @@
+ALTER TABLE `movcom_secretarias` CHANGE COLUMN `secretaria_id` `secretaria_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_usuarios` CHANGE COLUMN `usuario_id` `usuario_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_dominios` CHANGE COLUMN `dominio_id` `dominio_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_sitios_favoritos` CHANGE COLUMN `sitio_id` `sitio_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_entidades` CHANGE COLUMN `entidad_id` `entidad_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_rutas` CHANGE COLUMN `ruta_id` `ruta_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_puntos_rutas` CHANGE COLUMN `punto_id` `punto_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_registros` CHANGE COLUMN `registro_id` `registro_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_trayectos` CHANGE COLUMN `trayecto_id` `trayecto_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_suscripcion_ruta` CHANGE COLUMN `suscripcion_id` `suscripcion_id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `movcom_vehiculos` CHANGE COLUMN `vehiculo_id` `vehiculo_id` INT(11) NOT NULL AUTO_INCREMENT ;

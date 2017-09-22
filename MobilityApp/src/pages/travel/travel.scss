@@ -1,0 +1,22 @@
+page-travel {
+    #map{
+        height: 95%;
+        weight: 100%;
+    } 
+    .item-background{
+        background: rgba(255, 255, 255, 0);
+        border-top: none;
+    }
+    .ion-item-custome{
+        background-color: transparent;
+        padding-left: 0;
+        position: relative;
+    }
+    ion-checkbox{
+        button.item-cover{
+          left: initial;
+          right: 0;
+          width: 15%;
+        }
+    }
+}

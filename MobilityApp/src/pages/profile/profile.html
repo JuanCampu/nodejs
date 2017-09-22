@@ -1,0 +1,52 @@
+﻿<!--
+  Generated template for the NewPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton >
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> 
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content   class="image-background">
+  <div [hidden]="isLoading">
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col width-50>
+          <img class="image-profile" src="{{photo}}" />
+        </ion-col>
+        <ion-col width-50>
+          <button [disabled]="!networkService.connectionState" ion-button type="submit" (click)="ChangePhoto()" block>Cambiar Foto</button>
+          <button [disabled]="!networkService.connectionState" ion-button type="submit" (click)="goEdit()" block>Editar Perfil</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list>
+      <ion-item class="item-background item-profile">
+        <ion-label class="font-movi-app" floating>Nombre:</ion-label>
+        <ion-input class="font-movi-app" disabled="true" [(ngModel)]="usuario.nombre"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-background item-profile">
+        <ion-label class="font-movi-app" floating>Cedula:</ion-label>
+        <ion-input class="font-movi-app" disabled="true" type="tel" [(ngModel)]="usuario.cedula"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-background item-profile">
+        <ion-label class="font-movi-app" floating>Email:</ion-label>
+        <ion-input class="font-movi-app" disabled="true" type="email" [(ngModel)]="usuario.email"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-background item-profile">
+        <ion-label class="font-movi-app" floating>Celular:</ion-label>
+        <ion-input class="font-movi-app" disabled="true" type="tel" [(ngModel)]="usuario.celular"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>

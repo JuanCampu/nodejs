@@ -1,0 +1,28 @@
+<!--
+  Generated template for the JoinPointPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Selecciona un punto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content [ngClass]="{'image-network': !networkService.connectionState }">
+  <img src="assets/img/markerIcon.png" class="marker-style"  [hidden]="visible || !networkService.connectionState " />
+  <div #map [hidden]="!networkService.connectionState" id="map"></div>
+</ion-content>
+<ion-footer class="footer-color">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6><button block fab-center ion-button (click)="Cancel()" outline>Cancelar</button></ion-col>
+      <ion-col col-6><button block fab-center ion-button (click)="SelectPoint()" [disabled]="dragStart || !networkService.connectionState">Seleccionar</button></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+

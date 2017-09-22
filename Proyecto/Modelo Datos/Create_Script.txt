@@ -1,0 +1,124 @@
+CREATE TABLE movcom_dominios (
+  dominio_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  dominio_estado BOOL NULL,
+  dominio_descripcion VARCHAR(70) NULL,
+  PRIMARY KEY(dominio_id)
+);
+
+CREATE TABLE movcom_rutas (
+  ruta_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  ruta_inicio_direccion VARCHAR(255) NULL,
+  ruta_inicio_latitud VARCHAR(255) NULL,
+  ruta_inicio_longitud VARCHAR(255) NULL,
+  ruta_destino_direccion VARCHAR(255) NULL,
+  ruta_destino_latitud VARCHAR(255) NULL,
+  ruta_destino_longitud VARCHAR(255) NULL,
+  ruta_nombre VARCHAR(80) NULL,
+  ruta_hora_inicio TIME NULL,
+  ruta_lunes BOOL NULL,
+  ruta_martes BOOL NULL,
+  ruta_miercoles BOOL NULL,
+  ruta_jueves BOOL NULL,
+  ruta_viernes BOOL NULL,
+  ruta_sabado BOOL NULL,
+  ruta_domingo BOOL NULL,
+  PRIMARY KEY(ruta_id)
+);
+
+CREATE TABLE movcom_tipo_punto (
+  punto_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  punto_descripcion VARCHAR(20) NULL,
+  PRIMARY KEY(punto_id)
+);
+
+CREATE TABLE movcomp_secretarias (
+  secretaria_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  secretaria_nombre VARCHAR(200) NULL,
+  secretaria_descripcion VARCHAR(255) NULL,
+  PRIMARY KEY(secretaria_id)
+);
+
+CREATE TABLE movcom_entidad (
+  entidad_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  secretaria_id INTEGER UNSIGNED NOT NULL,
+  entidad_nombre VARCHAR(200) NULL,
+  entidad_descripcion VARCHAR(255) NULL,
+  PRIMARY KEY(entidad_id),
+  INDEX movcom_entidad_FKIndex1(secretaria_id)
+);
+
+CREATE TABLE movcom_puntos_ruta (
+  puntos_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  movcom_tipo_id INTEGER UNSIGNED NOT NULL,
+  ruta_id INTEGER UNSIGNED NOT NULL,
+  registro_latitud VARCHAR(255) NULL,
+  registro_longitud VARCHAR(255) NULL,
+  PRIMARY KEY(puntos_id),
+  INDEX movcom_puntos_ruta_FKIndex1(ruta_id),
+  INDEX movcom_puntos_ruta_FKIndex2(movcom_tipo_id)
+);
+
+CREATE TABLE Drupal_User_Table (
+  user_Id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  entidad_id INTEGER UNSIGNED NOT NULL,
+  user_cedula INTEGER UNSIGNED NULL,
+  user_activo BOOL NULL,
+  user_nombre VARCHAR(120) NULL,
+  user_celular INTEGER UNSIGNED NULL,
+  PRIMARY KEY(user_Id),
+  INDEX Drupal_User_Table_FKIndex1(entidad_id)
+);
+
+CREATE TABLE movcom_vehiculos (
+  vehiculo_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_Id INTEGER UNSIGNED NOT NULL,
+  vehiculo_placa VARCHAR(6) NULL,
+  vehiculo_marca VARCHAR(20) NULL,
+  vehiculo_modelo INTEGER UNSIGNED NULL,
+  vehiculo_color VARCHAR(20) NULL,
+  vehiculo_cupo INTEGER UNSIGNED NULL,
+  vehiculo_foto BLOB NULL,
+  PRIMARY KEY(vehiculo_id),
+  INDEX movcom_vehiculos_FKIndex1(user_Id)
+);
+
+CREATE TABLE movcom_registro_usuario_ruta (
+  registro_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_Id INTEGER UNSIGNED NOT NULL,
+  ruta_id INTEGER UNSIGNED NOT NULL,
+  registro_fecha DATE NULL,
+  registro_hora TIME NULL,
+  registro_estado BOOL NULL,
+  PRIMARY KEY(registro_id),
+  INDEX movcom_registro_usuario_ruta_FKIndex1(ruta_id),
+  INDEX movcom_registro_usuario_ruta_FKIndex2(user_Id)
+);
+
+CREATE TABLE movcom_sitios_favoritos (
+  sitio_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_Id INTEGER UNSIGNED NOT NULL,
+  sitio_descripcion VARCHAR(30) NULL,
+  sitio_direccion VARCHAR(255) NULL,
+  sitio_coordenada_x VARCHAR(255) NULL,
+  sitio_coordenada_y VARCHAR(255) NULL,
+  PRIMARY KEY(sitio_id),
+  INDEX movcom_sitios_favoritos_FKIndex1(user_Id)
+);
+
+CREATE TABLE movcom_trayecto (
+  trayecto_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  registro_id INTEGER UNSIGNED NOT NULL,
+  trayecto_inicio_fecha DATE NULL,
+  trayecto_inicio_hora TIME NULL,
+  trayecto_inicio_direccion VARCHAR(255) NULL,
+  trayecto_inicio_latitud VARCHAR(255) NULL,
+  trayecto_inicio_longitud VARCHAR(255) NULL,
+  trayecto_destino_fecha DATE NULL,
+  trayecto_destino_hora TIME NULL,
+  trayecto_destino_direccion VARCHAR(255) NULL,
+  trayecto_destino_latitud VARCHAR(255) NULL,
+  trayecto_destino_longitud VARCHAR(255) NULL,
+  PRIMARY KEY(trayecto_id),
+  INDEX movcom_trayecto_FKIndex1(registro_id)
+);
+

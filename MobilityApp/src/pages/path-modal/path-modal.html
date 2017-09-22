@@ -1,0 +1,58 @@
+<!--
+  Generated template for the PathModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle Ruta</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="image-background" [ngClass]="{'image-network': !networkService.connectionState }" padding>
+  <div [hidden]="!networkService.connectionState" #map id="map"></div>
+  <div [hidden]="!networkService.connectionState">
+    <div [hidden]="owner">
+        <ion-item class="item-background item-padd-left">
+            <ion-label class="font-movi-app">Nombre:</ion-label>
+            <ion-input class="font-movi-app" [(ngModel)]="path.ruta_nombre" [disabled]="true" type="text"></ion-input>
+        </ion-item>
+    </div>
+    <div [hidden]="!owner">
+      <ion-card>    
+        <ion-fab right top>
+          <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+        <ion-item>
+          <ion-icon name="map" item-left large></ion-icon>
+          <h2>Distancia de la ruta: {{km}} </h2>
+          <p>Tiempo apróximado {{timePath}}</p>
+          <p [hidden]="this.path.ruta_estado != 1">La ruta iniciará pronto</p>
+          <p [hidden]="this.path.ruta_estado != 2">La ruta está en curso</p>
+        </ion-item>
+        <ion-item>
+          <button [hidden]="this.isActivePath" ion-button icon-left clear item-end (click)="ActivePath()" [disabled]="this.path.ruta_estado != 0 || this.otherPath">
+            <ion-icon name="navigate" ></ion-icon>
+              Activar Ruta
+          </button>
+          <button [hidden]="!this.isActivePath" ion-button icon-left clear item-end (click)="DeactivatePath()">
+            <ion-icon name="navigate" ></ion-icon>
+              Desactivar Ruta
+          </button>
+        </ion-item>      
+      </ion-card>
+      <ion-item hidden>
+        <ion-select #selectTime okText="Iniciar" cancelText="Cancelar" [(ngModel)]="timeChoosed" (ionChange)="ChoosingTime()">
+          <ion-option *ngFor="let time of timesForPath" [value]="time.value" >{{time.text}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-color">
+  <div class="center button-mar-veh">
+    <button fab-center ion-button block (click)="Cancel()">Salir</button>
+  </div>
+</ion-footer>

@@ -1,0 +1,32 @@
+﻿<ion-content padding class="image-background">
+  <ion-slides pager>
+    <ion-slide>
+      
+      <img src="assets/img/tutorial-img-1.jpg" class="slide-image" />
+      <h2 class=" font-movi-app-bold slide-title"> !Bienvenido a MoviApp¡</h2>
+        <div class="tutorial-text font-movi-app">
+          <p>
+              Descubre la movilidad colaborativa y compartida
+              
+          </p>
+        </div>
+    </ion-slide>
+    <ion-slide>
+      
+      <img src="assets/img/tutorial-img-2.jpg" class="slide-image" />
+      <h2 class=" font-movi-app-bold  slide-title">Registra tu información</h2>
+      <div class="tutorial-text2 font-movi-app">
+        <p>
+          Registra vehículos, sitios favoritos y rutas cotidianas para un cambio de cultura en movilidad. 
+        </p>
+      </div>
+      <button class="btn-movi-app-green-clear" [hidden]="visited" ion-button (click)="next()">
+        Siguiente
+      </button>
+      <button class="btn-movi-app-green-clear" [hidden]="!visited"  ion-button (click)="GoStart()">
+        Volver al inicio
+      </button>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

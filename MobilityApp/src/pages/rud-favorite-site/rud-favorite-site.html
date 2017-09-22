@@ -1,0 +1,37 @@
+<!--
+  Generated template for the RudFavoriteSitePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Sitios favoritos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="image-background" padding>
+  <div [hidden]="isLoading">
+    <ion-list>
+        <ion-item class="item-background" *ngFor="let site of favoriteSites; let index = index;">
+            <ion-avatar item-start>
+                <ion-icon class="ion-icon-block icon-size ion-md-iconsc" ios="ios-pin" md="md-pin"   ></ion-icon>
+            </ion-avatar>
+            <h2 class="font-movi-app">{{site.sitio_nombre}}</h2>
+            <h3 class="font-movi-app"> Descripción: {{site.sitio_descripcion}}</h3>
+            <p class="font-movi-app">Dirección: {{(site.sitio_direccion.length > 10) ? site.sitio_direccion.substring(0, 25)+'...': site.sitio_direccion}}</p>
+            <ion-note  item-end> 
+                <ion-icon  [hidden]="!networkService.connectionState"  class="icon-moviapp-green icon-size ion-md-iconsc" (click)="PresentPathModal(index)"  ios="ios-create" md="md-create">
+                  </ion-icon><ion-icon  [hidden]="!networkService.connectionState"  class="icon-delete icon-size danger ion-md-iconsc" [ngStyle]="{'color': red}" (click)="DeleteSite(site.sitio_id)"   ios="ios-trash" md="md-trash"></ion-icon>
+            </ion-note>
+          </ion-item>
+    </ion-list>
+    <div class="center button-mar" >
+        <button block ion-button [disabled]="!networkService.connectionState"   (click)="AddNewSiteFavorite()" class="btn-movi-app-green-clear font-movi-app">Nuevo Sitio</button>
+    </div>
+  </div>
+</ion-content>

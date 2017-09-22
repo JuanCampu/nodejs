@@ -1,0 +1,22 @@
+page-google-map {
+    #map{
+        height: 100%;
+        weight: 100%;
+    }
+    .marker-style{
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 50px;
+        display: block;
+        margin: auto;
+        z-index: 1;
+        max-width: 50px;
+        max-height: 50px;
+    }
+
+    .back-button{
+		display: block!important;
+    }
+}

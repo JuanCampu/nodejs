@@ -1,0 +1,33 @@
+<!--
+  Generated template for the SearchPathPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar hideBackButton>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Buscar Viaje</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="image-background" padding>
+          <ion-item class="item-background" (click)="SearchBy(true)">
+              <ion-icon ios="md-map" md="md-map"  item-start class="ion-md-iconsc" ></ion-icon>
+              <ion-label class="font-movi-app">Buscar por nombre.</ion-label>
+              <ion-note item-end> 
+                  <ion-icon ios="md-person" md="md-person" class="ion-md-iconsc" ></ion-icon>
+              </ion-note>
+          </ion-item>
+          <ion-item class="item-background" (click)="SearchBy(false)" >
+            <ion-icon ios="md-map" md="md-map"  item-start class="ion-md-iconsc" ></ion-icon>
+            <ion-label class="font-movi-app">Buscar por GPS.</ion-label>
+            <ion-note item-end> 
+                <ion-icon ios="ios-locate" md="md-locate"  class="ion-md-iconsc"></ion-icon>
+            </ion-note>
+        </ion-item>
+
+</ion-content>

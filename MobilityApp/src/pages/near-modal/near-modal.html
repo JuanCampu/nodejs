@@ -1,0 +1,48 @@
+<!--
+  Generated template for the NearModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalle de la Ruta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="image-background"  [ngClass]="{'image-network': !networkService.connectionState }" padding>
+    <div #map id="map"></div>
+    <div [hidden]="isLoading || !networkService.connectionState ">
+      <ion-card>    
+        <ion-fab right top>
+          <button ion-fab>
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+        <ion-item>
+            <ion-avatar item-start>
+                <img class="image-profile" src="{{photo}}"/>
+            </ion-avatar>
+            
+                  <h2>{{driver.nombre}}</h2>
+                  <p>Celular:{{driver.celular}}</p>
+         
+        </ion-item>
+        <ion-item>
+          <span item-left>{{timePath}}</span>
+          <span item-left>{{km}}</span>
+          <button ion-button icon-left clear item-end (click)="GoJoinPath()">
+            <ion-icon name="navigate" ></ion-icon>
+            Unirme a la ruta
+          </button>
+        </ion-item>      
+      </ion-card>
+    </div>
+</ion-content>
+<ion-footer class="footer-color">
+  <div class="center button-mar-veh">
+    <button fab-center ion-button block (click)="Cancel()">Salir</button>
+  </div>
+</ion-footer>

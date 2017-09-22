@@ -1,0 +1,254 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+@font-face {
+    font-family: "raleway-bold";
+    src: url(../assets/font/ralewayextrabold.ttf);
+}
+
+@font-face {
+    font-family: "raleway-semibold";
+    src: url(../assets/font/ralewaysemibold.ttf);
+}
+
+.icon-delete{
+  margin-left: 23px;
+}
+
+.icon-size{
+  font-size: 23px;
+}
+
+.font-movi-app{
+  color: #fff !important;
+  font-family: "raleway-semibold";
+}
+.item-movi-app{
+  color: #fff;
+  background-color: transparent;
+}
+
+.item-background{
+  background: rgba(255, 255, 255, 0);
+  border-top: none;
+}
+
+.font-movi-app-bold{
+  color: #fff;
+  font-family: "raleway-bold";
+}
+.alert-message{
+    color: rgb(255, 32, 32);
+    font-weight: 600;
+}
+.footer-color{
+  background: #075d68;
+}
+.icon-moviapp-green {
+    color: #5DDA42;
+}
+.text-logo {
+  margin-top: 30px;
+  font-size: 35px;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block !important;
+}
+
+.danger{
+      color: #ca0303;
+}
+.center{
+  text-align: center;
+}
+/* Estilo MENU  */
+.left-menu-side{
+  background-color: #9d9d9d;
+ 
+}
+.left-menu-side:hover{
+  background-color: #9d9d9d;
+ 
+}
+/* Fin Estilo Menu */
+
+
+/* Estilo botones */
+
+.btn-movi-app-green-clear{
+    background-color: #5DDA42;
+}
+
+.btn-movi-app-green-clear:hover{
+  background-color: #5DDA42 !important;
+}
+
+/* Fin Estilo botones */
+
+/* Estilo Titulos */
+.title-h1-movi-app {
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+    font-weight: 700;
+  }
+.title-h2-movi-app {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
+}
+/* Fin  Estilo Titulos */
+
+/* Estilo pantalla principal - Loading */
+.image-background {
+    background: url('../assets/img/fondo-pantalla-Movi-App.png') center;
+}
+.image-network {
+  background: url('../assets/img/fondo-pantalla-internet.png') center;
+}
+
+#grad {
+  background: url('../assets/img/loader-moviapp.gif') center;
+  background-size: 100% 100% ;
+  background-repeat: no-repeat;
+  animation-iteration-count:infinite;
+}
+/* Fin Estilo pantalla principal - Loading  */
+/* Estilo banner superior  */
+.ion-md-arrow-back:before {
+    content: url('../assets/img/Flecha-30x30.png');
+}
+.button-mar{
+  margin: 35px 0px;
+}
+
+.button-mar-veh{
+  margin: 0px 15px;
+}
+
+.item-padd-left{
+  padding-left: 0px;
+}
+
+.action-sheet-md .ion-md-search, .action-sheet-md  .ion-md-person-add, .action-sheet-cancel ion-icon {
+  color: #9d9d9d;
+}
+.white{
+  color: #fff !important;
+}
+
+.justify{
+  text-align: justify;
+}
+
+.button-outline-icon {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #9d9d9d;
+  color: #9d9d9d;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.slide-zoom{
+  height: 85%;
+}
+
+.swiper-slide img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.ion-md-iconsc {
+  //color: #9d9d9d;
+  color:#fff;
+}
+
+.select-entitys{
+  max-width: 100% !important;
+}
+
+.item-profile{
+  padding: 0px 20px;
+}
+.list-md > .item-block:last-child .item-inner  {
+  border-bottom: 1px solid #dedede;
+}
+
+.list-md .item-input:last-child {
+  border-bottom:none;
+}
+.item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color:#fff;
+  -webkit-box-shadow: inset 0 -1px 0 0 #fff;
+  box-shadow: inset 0 -1px 0 0 #fff;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color: #ffffff;
+}
+
+.toolbar-title{
+  color:#fff;
+  line-height: 2;
+}
+
+.toolbar-background {
+    background: url('../assets/img/Logo-Superior-Menu.png')  center;
+    background-size:100%; 
+}
+
+.toolbar-background-ios{
+    background: url('../assets/img/Logo-Superior-Menu.png')  center;
+    background-size:100%; 
+}
+.no-padding-sides{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+/* Fin Estilo banner superior  */
+
+
+/* Dispositivos pequeños (tablets, anchura mayor o igual a 768px) */
+@media (min-width: 200px) {
+  .start-icon-margin{
+    margin-left: 15%;
+  }
+}
+
+/* Dispositivos medianos (ordenadores, anchura mayor o igual a 992px) */
+@media (min-width: 768px) {
+  .start-icon-margin{
+    margin-left: 37%;
+  }
+}
+
+/* Dispositivos grandes (ordenadores, anchura mayor o igual a 1200px) */
+@media (min-width: 992px) {
+   .start-icon-margin{
+    margin-left: 50%;
+  }
+
+}

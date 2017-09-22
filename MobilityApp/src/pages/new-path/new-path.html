@@ -1,0 +1,76 @@
+<!--
+  Generated template for the NewPathPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registrar ruta</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content  class="image-background" [ngClass]="{'image-network': !networkService.connectionState }" padding>
+  <div [hidden]="isLoading || !networkService.connectionState">
+    <div [hidden]="firstPage ">
+      <form [formGroup]="pathForm">
+        <ion-item class="item-background item-padd-left">
+          <ion-label class="font-movi-app">Nombre:</ion-label>
+          <ion-input class="font-movi-app" type="text" formControlName="ruta_nombre"></ion-input>
+        </ion-item>
+        <ion-item class="item-background item-padd-left">
+          <ion-label class="font-movi-app">Vehículo</ion-label>
+          <ion-select [okText]="'Aceptar'" [cancelText]="'Cancelar'" class="font-movi-app" formControlName="vehiculo_id" (ionChange)="ChoosingVehicle()">
+            <ion-option *ngFor="let vehicle of vehicles" [value]= "vehicle.vehiculo_id" (ionSelect)="quaota = vehicle.vehiculo_cupo">{{vehicle.vehiculo_placa}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="item-background item-padd-left"> 
+          <ion-label class="font-movi-app">Punto de inicio</ion-label>
+          <!--<ion-input type="text" formControlName="ruta_inicio_direccion" (UpdateLocation)="EditDirection($event)" [inputIndex]="0" my-google-map></ion-input>-->
+          <ion-input class="font-movi-app" type="button" formControlName="ruta_inicio_direccion" (focus)="$event.stopImmediatePropagation();$event.preventDefault(); ShowMap(0);"></ion-input>
+          <button ion-button class="button-outline-icon" item-end (click)="ShowMap(0)"><ion-icon name="map"></ion-icon></button>
+        </ion-item>
+      
+        <form [formGroup]="point" *ngFor="let point of pathForm.controls.middlePoints.controls; let i = index;">
+          <ion-item class="item-background  item-padd-left">
+            <ion-label class="font-movi-app">Punto medio</ion-label>
+            <!--<ion-input type="text"  placeholder="Opcional"  formControlName="punto_direccion" (UpdateLocation)="EditDirection($event)"  [inputIndex]="i+2" my-google-map></ion-input>-->
+            <ion-input class="font-movi-app" type="button"  placeholder="Opcional"  formControlName="punto_direccion" (focus)="$event.stopImmediatePropagation();$event.preventDefault(); ShowMap(i+2)"></ion-input>
+            <button ion-button class="button-outline-icon" item-end (click)="ShowMap(i+2)"><ion-icon name="map"></ion-icon></button>
+          </ion-item>
+        </form>
+        <ion-item class="item-background item-padd-left">
+          <ion-label class="font-movi-app">Punto final</ion-label>
+          <ion-input class="font-movi-app" type="button" formControlName="ruta_destino_direccion" (focus)="$event.stopImmediatePropagation(); $event.preventDefault(); ShowMap(1)"></ion-input>
+          <!--<ion-input type="text" formControlName="ruta_destino_direccion" (UpdateLocation)="EditDirection($event)"  [inputIndex]="1"  my-google-map></ion-input>-->
+          <button ion-button class="button-outline-icon" item-end (click)="ShowMap(1)"><ion-icon name="map"></ion-icon></button>
+        </ion-item>
+      </form>
+    <div text-center class="button-mar">
+      <ion-grid class="no-padding-sides">
+        <ion-row>
+            <ion-col col-6 class="no-padding-sides"> 
+                <button ion-button block (click)="AddMiddlePoint()" icon-start class="btn-movi-app-green-clear">
+                    <ion-icon name="add"></ion-icon>&nbsp;
+                    Punto medio
+                </button>
+            </ion-col>
+          <ion-col col-6>
+              <button block ion-button color="danger" [hidden]="pathForm.controls.middlePoints.length == 0" (click)="RemoveMiddlePoint()" icon-end>
+                  <ion-icon name="close"></ion-icon>&nbsp;
+                  Punto medio
+              </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    </div>
+  </div>
+  <div #map id="map" [hidden]="firstPage || !networkService.connectionState"></div>
+  <div [hidden]="isLoading || !networkService.connectionState">
+    <div text-center>
+      <button block ion-button [hidden]="firstPage" (click)="CreatePath()" 
+        [disabled]="!pathForm.valid"
+        class="btn-movi-app-green-clear">Crear</button>
+    </div>
+  </div>
+</ion-content>

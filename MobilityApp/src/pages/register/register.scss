@@ -1,0 +1,19 @@
+page-Register {
+  ion-content {
+    background-color: rgb(246, 244, 244) !important;
+  }
+  #register-img{
+    text-align: center;
+  }
+
+
+  .text-description {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  ion-select {
+    width: 100% !important;
+    max-width: inherit !important;
+  }
+}
